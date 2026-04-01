@@ -75,7 +75,7 @@ def con(file):
                                mime="audio/mp3")
     
         elif target == "Bengali":
-            tts = gTTS(text=translated, lang="bn")  # corrected code: 'bn' not 'be'
+            tts = gTTS(text=translated, lang="bn")  '
             tts.save("audio_bengali.mp3")
             st.audio("audio_bengali.mp3")
             st.download_button("📥 Download Audio",
