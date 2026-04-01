@@ -1,5 +1,5 @@
 import streamlit as st
-import pyttsx3                   
+#import pyttsx3                   
 from PyPDF2 import PdfReader  
 from deep_translator import GoogleTranslator
 from gtts import gTTS
@@ -21,7 +21,7 @@ def con(file):
     i = st.sidebar.number_input("📄 Enter Page Number:",min_value=0, max_value=n_page, step=1)
     st.sidebar.info("Note:- Here page number starts from 0")
     st.write("You are on Page:",i+1)
-    melo = pyttsx3.init()     
+    #melo = pyttsx3.init()     
     page = reader.pages[i]    
     text = page.extract_text()
 
@@ -50,20 +50,6 @@ def con(file):
             translated = GoogleTranslator(source='en', target='bn').translate(text)
             st.success(translated)
         
-    col1, col2= st.sidebar.columns(2)
-
-    with col1:
-        if st.button("🔊 Read",use_container_width=True):
-            melo = pyttsx3.init()    
-            melo.say(text)
-            melo.runAndWait()
-    
-    with col2:
-        if st.button("🔇 Stop",use_container_width=True):
-            melo = pyttsx3.init()
-            melo.stop()
-            st.sidebar.write("Stopped reading.")
-
     if st.sidebar.button("🔊 Create audio file",use_container_width=True):
         if target == "Hindi":
             tts = gTTS(text=translated, lang="hi")
@@ -111,6 +97,7 @@ PDF Reader Pro is a smart, multilingual document assistant designed to help you 
 - 🔇 Stop playback anytime.
 - 🧠 Compare original and translated text side-by-side for clarity and learning.
 - 📥 Download translated text as a file for study or sharing.""")
+
 st.markdown("---")
 st.markdown("Developed by Ravi Prajapati using Streamlit & Python")
 
