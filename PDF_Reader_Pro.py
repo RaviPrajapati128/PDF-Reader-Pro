@@ -1,5 +1,4 @@
-import streamlit as st
-#import pyttsx3                   
+import streamlit as st              
 from PyPDF2 import PdfReader  
 from deep_translator import GoogleTranslator
 from gtts import gTTS
@@ -20,8 +19,7 @@ def con(file):
     
     i = st.sidebar.number_input("📄 Enter Page Number:",min_value=0, max_value=n_page, step=1)
     st.sidebar.info("Note:- Here page number starts from 0")
-    st.write("You are on Page:",i+1)
-    #melo = pyttsx3.init()     
+    st.write("You are on Page:",i+1)    
     page = reader.pages[i]    
     text = page.extract_text()
 
